@@ -4,6 +4,7 @@ import { IExtensionSingleActivationService } from '../activation/types';
 import {
     IBrowserService,
     IConfigurationService,
+    ICryptoUtils,
     ICurrentProcess,
     IExperimentService,
     IExtensions,
@@ -16,6 +17,7 @@ import {
     IsWindows,
     ToolExecutionPath,
 } from './types';
+import { ICryptoDevelopmentService } from '../crypto/types';
 import { IServiceManager } from '../ioc/types';
 import { JupyterExtensionDependencyManager } from '../jupyter/jupyterExtensionDependencyManager';
 import { ImportTracker } from '../telemetry/importTracker';
@@ -84,8 +86,11 @@ import {
 
 import { IMultiStepInputFactory, MultiStepInputFactory } from './utils/multiStepInput';
 import { Random } from './utils/random';
+import { CryptoUtils } from './utils/crypto';
+import { CryptoDevelopmentService } from '../crypto/cryptoDevelopmentService';
 import { ContextKeyManager } from './application/contextKeyManager';
 import { CreatePythonFileCommandHandler } from './application/commands/createPythonFile';
+import { CryptoDevelopmentCommandHandler } from './application/commands/cryptoDevelopmentCommand';
 import { RequireJupyterPrompt } from '../jupyter/requireJupyterPrompt';
 import { isWindows } from './utils/platform';
 import { PixiActivationCommandProvider } from './terminal/environmentActivationProviders/pixiActivationProvider';
@@ -97,6 +102,8 @@ export function registerTypes(serviceManager: IServiceManager): void {
     serviceManager.addSingleton<IInterpreterPathService>(IInterpreterPathService, InterpreterPathService);
     serviceManager.addSingleton<IExtensions>(IExtensions, Extensions);
     serviceManager.addSingleton<IRandom>(IRandom, Random);
+    serviceManager.addSingleton<ICryptoUtils>(ICryptoUtils, CryptoUtils);
+    serviceManager.addSingleton<ICryptoDevelopmentService>(ICryptoDevelopmentService, CryptoDevelopmentService);
     serviceManager.addSingleton<IPersistentStateFactory>(IPersistentStateFactory, PersistentStateFactory);
     serviceManager.addBinding(IPersistentStateFactory, IExtensionSingleActivationService);
     serviceManager.addSingleton<ITerminalServiceFactory>(ITerminalServiceFactory, TerminalServiceFactory);
@@ -116,6 +123,10 @@ export function registerTypes(serviceManager: IServiceManager): void {
     serviceManager.addSingleton<IExtensionSingleActivationService>(
         IExtensionSingleActivationService,
         CreatePythonFileCommandHandler,
+    );
+    serviceManager.addSingleton<IExtensionSingleActivationService>(
+        IExtensionSingleActivationService,
+        CryptoDevelopmentCommandHandler,
     );
     serviceManager.addSingleton<ICommandManager>(ICommandManager, CommandManager);
     serviceManager.addSingleton<IContextKeyManager>(IContextKeyManager, ContextKeyManager);

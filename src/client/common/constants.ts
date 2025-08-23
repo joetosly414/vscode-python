@@ -65,6 +65,11 @@ export namespace Commands {
     export const Tests_CopilotSetup = 'python.copilotSetupTests';
     export const TriggerEnvironmentSelection = 'python.triggerEnvSelection';
     export const ViewOutput = 'python.viewOutput';
+    // Crypto development commands
+    export const Crypto_CreateProject = 'python.createCryptoProject';
+    export const Crypto_InsertUtilities = 'python.insertCryptoUtilities';
+    export const Crypto_ValidateDependencies = 'python.validateCryptoDependencies';
+    export const Crypto_GenerateKeys = 'python.generateCryptoKeys';
 }
 
 // Look at https://microsoft.github.io/vscode-codicons/dist/codicon.html for other Octicon icon ids

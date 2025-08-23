@@ -377,6 +377,26 @@
                 "category": "Python",
                 "command": "python.installJupyter",
                 "title": "%python.command.python.installJupyter.title%"
+            },
+            {
+                "category": "Python",
+                "command": "python.createCryptoProject",
+                "title": "Create Crypto Project"
+            },
+            {
+                "category": "Python",
+                "command": "python.insertCryptoUtilities",
+                "title": "Insert Crypto Utilities"
+            },
+            {
+                "category": "Python",
+                "command": "python.validateCryptoDependencies",
+                "title": "Validate Crypto Dependencies"
+            },
+            {
+                "category": "Python",
+                "command": "python.generateCryptoKeys",
+                "title": "Generate Development Crypto Keys"
             }
         ],
         "configuration": {
@@ -1336,6 +1356,30 @@
                     "category": "Python",
                     "command": "python.viewOutput",
                     "title": "%python.command.python.viewOutput.title%",
+                    "when": "!virtualWorkspace && shellExecutionSupported"
+                },
+                {
+                    "category": "Python",
+                    "command": "python.createCryptoProject",
+                    "title": "Create Crypto Project",
+                    "when": "!virtualWorkspace && shellExecutionSupported"
+                },
+                {
+                    "category": "Python",
+                    "command": "python.insertCryptoUtilities",
+                    "title": "Insert Crypto Utilities",
+                    "when": "!virtualWorkspace && shellExecutionSupported && editorLangId == python"
+                },
+                {
+                    "category": "Python",
+                    "command": "python.validateCryptoDependencies",
+                    "title": "Validate Crypto Dependencies",
+                    "when": "!virtualWorkspace && shellExecutionSupported"
+                },
+                {
+                    "category": "Python",
+                    "command": "python.generateCryptoKeys",
+                    "title": "Generate Development Crypto Keys",
                     "when": "!virtualWorkspace && shellExecutionSupported"
                 }
             ],
