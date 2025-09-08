@@ -143,6 +143,18 @@ export interface IRandom {
     getRandomInt(min?: number, max?: number): number;
 }
 
+export const ICryptoUtils = Symbol('ICryptoUtils');
+export interface ICryptoUtils {
+    getRandomPrivateKey(length?: number): string;
+    getSecp256k1PrivateKey(): string;
+    getEd25519PrivateKey(): string;
+    validatePrivateKeyFormat(privateKey: string): boolean;
+    validateAddressFormat(address: string, addressType?: string): boolean;
+    generateSeed(length?: number): string;
+    calculateHash(data: string | Buffer, algorithm?: string): string;
+    generateTransactionId(): string;
+}
+
 export const ICurrentProcess = Symbol('ICurrentProcess');
 export interface ICurrentProcess {
     readonly env: EnvironmentVariables;
